@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, EDBActivity!</string>
+    <string name="app_name">EDB</string>
+    <string name="changelog">Changelog</string>
+    <string name="encrypted">Encrypted</string>
+    <string name="database">Database</string>
+
+</resources>

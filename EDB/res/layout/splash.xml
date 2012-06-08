@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+	
+    <TextView
+	    android:id="@+id/TextView_E"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:text="@string/encrypted"
+	    android:textSize="@dimen/splash_text"
+	    android:textColor="@color/grey"
+	    android:gravity="center" />
+    <TextView
+	    android:id="@+id/TextView_DB"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:text="@string/database"
+	    android:textSize="@dimen/splash_text"
+	    android:textColor="@color/grey"
+	    android:gravity="center" />
+    <ImageView
+	    android:id="@+id/ImageView_EDBLogo"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_gravity="center"
+	    android:src="@drawable/edb_logo" />
+
+</LinearLayout>
