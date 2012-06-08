@@ -35,7 +35,7 @@ public class EDBActivity extends SuperEDBActivity {
         if (mGameSettings.getBoolean(FIRST_BOOT, true)) {
         	editor.putBoolean("boot", false);
             editor.commit();
-            
+            //test
         }
     }
     
