@@ -19,7 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="EDBChangelogActivity"></activity>
+        <activity android:name="EDBChangelogActivity" android:icon="@drawable/time"></activity>
         <activity android:name="EDBActivity"></activity>
     </application>
 
