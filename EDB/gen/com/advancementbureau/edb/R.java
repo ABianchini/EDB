@@ -26,23 +26,30 @@ public final class R {
         public static final int title_text=0x7f070004;
     }
     public static final class drawable {
-        public static final int edb_logo=0x7f020000;
-        public static final int ic_launcher=0x7f020001;
-        public static final int launcher_icon=0x7f020002;
-        public static final int time=0x7f020003;
+        public static final int alert=0x7f020000;
+        public static final int edb_logo=0x7f020001;
+        public static final int help=0x7f020002;
+        public static final int ic_launcher=0x7f020003;
+        public static final int launcher_icon=0x7f020004;
+        public static final int time=0x7f020005;
     }
     public static final class id {
-        public static final int ImageView_EDBLogo=0x7f0a0004;
+        public static final int ImageView_EDBLogo=0x7f0a0006;
         public static final int ScrollViewSettings=0x7f0a0000;
         public static final int TextView_ChangelogText=0x7f0a0001;
-        public static final int TextView_DB=0x7f0a0003;
-        public static final int TextView_E=0x7f0a0002;
-        public static final int changelog_menu_item=0x7f0a0005;
+        public static final int TextView_DB=0x7f0a0005;
+        public static final int TextView_E=0x7f0a0004;
+        public static final int changelog_menu_item=0x7f0a0008;
+        public static final int help_menu_item=0x7f0a0007;
+        public static final int layout_root=0x7f0a0002;
+        public static final int preTextPrompt_TextView=0x7f0a0003;
     }
     public static final class layout {
         public static final int changelog=0x7f030000;
-        public static final int main=0x7f030001;
-        public static final int splash=0x7f030002;
+        public static final int first_dialog=0x7f030001;
+        public static final int help=0x7f030002;
+        public static final int main=0x7f030003;
+        public static final int splash=0x7f030004;
     }
     public static final class menu {
         public static final int mainoptions=0x7f090000;
@@ -55,6 +62,9 @@ public final class R {
         public static final int changelog=0x7f080002;
         public static final int database=0x7f080004;
         public static final int encrypted=0x7f080003;
+        public static final int first_dialog_text=0x7f080005;
         public static final int hello=0x7f080000;
+        public static final int help=0x7f080006;
+        public static final int read=0x7f080007;
     }
 }

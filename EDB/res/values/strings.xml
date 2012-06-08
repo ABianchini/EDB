@@ -5,5 +5,8 @@
     <string name="changelog">Changelog</string>
     <string name="encrypted">Encrypted</string>
     <string name="database">Database</string>
-
+    <string name="first_dialog_text">I strongly recommend you read the help page before using this app. It has useful tips, instructions, and warnings. Click help to go there now.</string>
+	<string name="help">Help</string>
+	<string name="read">READ</string>
+    
 </resources>
