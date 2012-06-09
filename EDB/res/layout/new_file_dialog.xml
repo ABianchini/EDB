@@ -3,13 +3,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:id="@+id/layout_root" >
+    android:id="@+id/layout_root2" >
     <TextView
         android:id="@+id/preTextPrompt_TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/grey"
-        android:text="@string/first_dialog_text"
-        android:padding="7dp" />
+        android:text="@string/new_file_prompt"
+        android:padding="5dp" />
+    <EditText
+        android:id="@+id/FileName_EditText"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:textColor="@color/grey"
+        android:padding="5dp" />
 
 </LinearLayout>

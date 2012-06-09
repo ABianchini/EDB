@@ -1,13 +1,16 @@
 package com.advancementbureau.edb;
 
 import android.app.ActionBar;
-import android.app.Activity;
+import android.app.TabActivity;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.TabHost;
 
-public class EDBHelpActivity extends Activity {
+@SuppressWarnings("deprecation")
+public class EDBHelpActivity extends TabActivity {
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -17,7 +20,24 @@ public class EDBHelpActivity extends Activity {
 	        ActionBar actionBar2 = getActionBar();
 	        actionBar2.setDisplayHomeAsUpEnabled(true);
         }
+        Resources res = getResources(); // Resource object to get Drawables
+        TabHost tabHost = getTabHost();  // The activity TabHost
+        TabHost.TabSpec spec;  // Resusable TabSpec for each tab
+        Intent intent;  // Reusable Intent for each tab
         
+        intent = new Intent().setClass(this, EDBWriteActivity.class);
+        spec = tabHost.newTabSpec("write").setIndicator("Write").setContent(intent);
+        tabHost.addTab(spec);
+        
+        intent = new Intent().setClass(this, EDBReadActivity.class);
+        spec = tabHost.newTabSpec("read").setIndicator("Read").setContent(intent);
+        tabHost.addTab(spec);
+        
+        intent = new Intent().setClass(this, EDBAboutActivity.class);
+        spec = tabHost.newTabSpec("about").setIndicator("About").setContent(intent);
+        tabHost.addTab(spec);
+        
+        tabHost.setCurrentTab(0);
     }
     
     @Override

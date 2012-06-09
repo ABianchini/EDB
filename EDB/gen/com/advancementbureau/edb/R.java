@@ -26,30 +26,45 @@ public final class R {
         public static final int title_text=0x7f070004;
     }
     public static final class drawable {
-        public static final int alert=0x7f020000;
-        public static final int edb_logo=0x7f020001;
-        public static final int help=0x7f020002;
-        public static final int ic_launcher=0x7f020003;
-        public static final int launcher_icon=0x7f020004;
-        public static final int time=0x7f020005;
+        public static final int add_dark=0x7f020000;
+        public static final int add_light=0x7f020001;
+        public static final int alert=0x7f020002;
+        public static final int edb_logo=0x7f020003;
+        public static final int help=0x7f020004;
+        public static final int ic_launcher=0x7f020005;
+        public static final int launcher_icon=0x7f020006;
+        public static final int time=0x7f020007;
     }
     public static final class id {
-        public static final int ImageView_EDBLogo=0x7f0a0006;
+        public static final int AddData_Layout=0x7f0a0009;
+        public static final int AddText=0x7f0a000a;
+        public static final int FileName_EditText=0x7f0a0005;
+        public static final int ImageView_EDBLogo=0x7f0a000d;
+        public static final int ReadData_Layout=0x7f0a0006;
+        public static final int ScrollViewReadData=0x7f0a0007;
         public static final int ScrollViewSettings=0x7f0a0000;
         public static final int TextView_ChangelogText=0x7f0a0001;
-        public static final int TextView_DB=0x7f0a0005;
-        public static final int TextView_E=0x7f0a0004;
-        public static final int changelog_menu_item=0x7f0a0008;
-        public static final int help_menu_item=0x7f0a0007;
+        public static final int TextView_DB=0x7f0a000c;
+        public static final int TextView_E=0x7f0a000b;
+        public static final int TextView_ReadData=0x7f0a0008;
+        public static final int add_menu_item=0x7f0a000e;
+        public static final int changelog_menu_item=0x7f0a0010;
+        public static final int help_menu_item=0x7f0a000f;
         public static final int layout_root=0x7f0a0002;
+        public static final int layout_root2=0x7f0a0004;
         public static final int preTextPrompt_TextView=0x7f0a0003;
     }
     public static final class layout {
-        public static final int changelog=0x7f030000;
-        public static final int first_dialog=0x7f030001;
-        public static final int help=0x7f030002;
-        public static final int main=0x7f030003;
-        public static final int splash=0x7f030004;
+        public static final int about=0x7f030000;
+        public static final int changelog=0x7f030001;
+        public static final int first_dialog=0x7f030002;
+        public static final int help=0x7f030003;
+        public static final int main=0x7f030004;
+        public static final int new_file_dialog=0x7f030005;
+        public static final int read=0x7f030006;
+        public static final int read_write=0x7f030007;
+        public static final int splash=0x7f030008;
+        public static final int write=0x7f030009;
     }
     public static final class menu {
         public static final int mainoptions=0x7f090000;
@@ -58,13 +73,20 @@ public final class R {
         public static final int changelog=0x7f050000;
     }
     public static final class string {
+        public static final int about=0x7f08000a;
         public static final int app_name=0x7f080001;
         public static final int changelog=0x7f080002;
         public static final int database=0x7f080004;
         public static final int encrypted=0x7f080003;
+        public static final int enter=0x7f08000e;
         public static final int first_dialog_text=0x7f080005;
         public static final int hello=0x7f080000;
         public static final int help=0x7f080006;
-        public static final int read=0x7f080007;
+        public static final int new_file=0x7f08000b;
+        public static final int new_file_prompt=0x7f08000c;
+        public static final int read=0x7f080009;
+        public static final int read_cap=0x7f080007;
+        public static final int read_write=0x7f08000d;
+        public static final int write=0x7f080008;
     }
 }

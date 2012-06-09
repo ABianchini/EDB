@@ -22,6 +22,10 @@
         <activity android:name="EDBChangelogActivity" android:icon="@drawable/time" android:label="@string/changelog"></activity>
         <activity android:name="EDBActivity"></activity>
         <activity android:name="EDBHelpActivity" android:icon="@drawable/help" android:label="@string/help"></activity>
+        <activity android:name="EDBWriteActivity"></activity>
+        <activity android:name="EDBReadActivity"></activity>
+        <activity android:name="EDBAboutActivity"></activity>
+        <activity android:name="EDBReadWriteActivity"></activity>
     </application>
 
 </manifest>

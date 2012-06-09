@@ -7,6 +7,13 @@
     <string name="database">Database</string>
     <string name="first_dialog_text">I strongly recommend you read the help page before using this app. It has useful tips, instructions, and warnings. Click help to go there now.</string>
 	<string name="help">Help</string>
-	<string name="read">READ</string>
+	<string name="read_cap">READ</string>
+	<string name="write">Write</string>
+	<string name="read">Read</string>
+	<string name="about">About</string>
+	<string name="new_file">New File</string>
+	<string name="new_file_prompt">New File Name:</string>
+	<string name="read_write">Read/Write</string>
+	<string name="enter">Enter</string>
     
 </resources>
