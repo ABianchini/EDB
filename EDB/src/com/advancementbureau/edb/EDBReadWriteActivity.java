@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
 
 public class EDBReadWriteActivity extends SuperEDBActivity {
 	String fileName;
@@ -22,6 +24,12 @@ public class EDBReadWriteActivity extends SuperEDBActivity {
 	        actionBar2.setDisplayHomeAsUpEnabled(true);
 	        actionBar2.setTitle(fileName);
         }
+        final LinearLayout enterButton = (LinearLayout) findViewById(R.id.EnterText);
+        enterButton.setOnClickListener(new View.OnClickListener() {
+        	public void onClick(View view) {
+        		
+        	}
+        });
     }
 	
 	@Override
