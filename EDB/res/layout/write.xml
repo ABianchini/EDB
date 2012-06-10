@@ -3,13 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
-	<ScrollView
-        android:id="@+id/ScrollViewSettings"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:scrollbars="vertical"
-        android:isScrollContainer="true"
-        android:scrollbarAlwaysDrawVerticalTrack="true" >
+	
 	    <TextView
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
@@ -51,5 +45,5 @@
 	        android:src="@drawable/new_file_dialog_screenshot" />
 	    
 	    
-	</ScrollView>
+	
 </LinearLayout>
