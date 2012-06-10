@@ -2,6 +2,7 @@ package com.advancementbureau.edb;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -112,16 +113,14 @@ public class EDBActivity extends SuperEDBActivity {
 					Editor editor = mGameSettings.edit();
 			    	editor.putString(NEW_FILE_NAME, fileName);
 			    	editor.commit();
-			    	String input = "";
 					try {
-						File dir = new File("/data/data/com.advancementbureau.edb/files" + fileName);
-						PrintWriter out = new PrintWriter(dir);
-						out.print("");
-						out.close();
-						/*FileOutputStream fos = openFileOutput(fileName, Context.MODE_APPEND|MODE_PRIVATE);
-						fos.write(input.getBytes());
-						fos.close();*/
+						FileOutputStream fos = openFileOutput(fileName, Context.MODE_APPEND|MODE_PRIVATE);
+						String outLine = "";
+						fos.write(outLine.getBytes());
+						fos.close();
 					} catch (FileNotFoundException e) {
+						e.printStackTrace();
+					} catch (IOException e) {
 						e.printStackTrace();
 					}
 			    	startActivity(new Intent(EDBActivity.this, EDBReadWriteActivity.class));
