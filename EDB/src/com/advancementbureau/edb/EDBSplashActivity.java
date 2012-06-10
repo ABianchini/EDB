@@ -1,5 +1,10 @@
 package com.advancementbureau.edb;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -17,10 +22,34 @@ public class EDBSplashActivity extends SuperEDBActivity {
         SharedPreferences bootPref = getSharedPreferences(FIRST_BOOT, MODE_PRIVATE);
         if (bootPref.getBoolean(FIRST_BOOT, true)) {
         	Animate();
+        	textFileCreate();
         } else {
         	startActivity(new Intent(EDBSplashActivity.this, EDBActivity.class));
     		EDBSplashActivity.this.finish();
         }
+    }
+    
+    private void textFileCreate() {
+		String sampleFile = "Just a sample file\nFeel free to delete";
+		try {
+			char[] inLinePieces = sampleFile.toCharArray();
+			char[] outLinePieces = new char[inLinePieces.length];
+			for (int i = 0; i < inLinePieces.length; i++) {
+				char outChar;
+				char inChar = inLinePieces[i];
+				outChar = (char) (inChar + 10);
+				outLinePieces[i] = outChar;
+			}
+			String outLine = new String(outLinePieces);
+			FileOutputStream fos = openFileOutput("Sample.txt", Context.MODE_APPEND|MODE_PRIVATE);
+			fos.write(outLine.getBytes());
+			fos.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    	
     }
     
     private void Animate() {

@@ -1,8 +1,9 @@
 package com.advancementbureau.edb;
 
+import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -17,7 +18,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.Toast;
 
 public class EDBActivity extends SuperEDBActivity {
 	boolean firstBootDone;
@@ -29,6 +34,23 @@ public class EDBActivity extends SuperEDBActivity {
         mGameSettings = getSharedPreferences(GAME_PREFERENCES, Context.MODE_PRIVATE);
         SharedPreferences bootPref = getSharedPreferences(FIRST_BOOT, MODE_PRIVATE);
         SharedPreferences.Editor editor = bootPref.edit();
+        
+        ListView menuList = (ListView) findViewById(R.id.FilesListView);
+        File dir = new File("/data/data/com.advancementbureau.edb/files");
+		final String[] files = dir.list();
+        //final String[] files = {"test","weeee","please work!"};
+        ArrayAdapter<String> adapt = new ArrayAdapter<String>(this,R.layout.menu_item, files);
+        menuList.setAdapter(adapt);
+        
+        menuList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        	public void onItemClick(AdapterView<?> parent, View itemClicked, int position, long id) {
+        		Editor editor = mGameSettings.edit();
+		    	editor.putString(NEW_FILE_NAME, files[position]);
+		    	editor.commit();
+		    	startActivity(new Intent(EDBActivity.this, EDBReadWriteActivity.class));
+        	}
+        });
+        
         /*
         File folder = new File(Environment.getExternalStorageDirectory() + "/EDB");
         boolean success = false;
@@ -86,20 +108,26 @@ public class EDBActivity extends SuperEDBActivity {
         .setPositiveButton("Create", new OnClickListener() {
 			public void onClick(DialogInterface arg0, int arg1) {
 				String fileName = newFileName.getText().toString() + ".txt";
-				Editor editor = mGameSettings.edit();
-		    	editor.putString(NEW_FILE_NAME, fileName);
-		    	editor.commit();
-		    	String input = "";
-				try {
-					FileOutputStream fos = openFileOutput(fileName, Context.MODE_APPEND|MODE_PRIVATE);
-					fos.write(input.getBytes());
-					fos.close();
-				} catch (FileNotFoundException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
+				if(fileName != ".txt") {
+					Editor editor = mGameSettings.edit();
+			    	editor.putString(NEW_FILE_NAME, fileName);
+			    	editor.commit();
+			    	String input = "";
+					try {
+						File dir = new File("/data/data/com.advancementbureau.edb/files" + fileName);
+						PrintWriter out = new PrintWriter(dir);
+						out.print("");
+						out.close();
+						/*FileOutputStream fos = openFileOutput(fileName, Context.MODE_APPEND|MODE_PRIVATE);
+						fos.write(input.getBytes());
+						fos.close();*/
+					} catch (FileNotFoundException e) {
+						e.printStackTrace();
+					}
+			    	startActivity(new Intent(EDBActivity.this, EDBReadWriteActivity.class));
+				} else {
+					toastName();
 				}
-		    	startActivity(new Intent(EDBActivity.this, EDBReadWriteActivity.class));
 			}
         }).show();
     }
@@ -124,5 +152,8 @@ public class EDBActivity extends SuperEDBActivity {
     	if (item.getItemId() == R.id.add_menu_item) {
     		newFileDialog(); }
     	return true;
+    }
+    private void toastName() {
+    	Toast.makeText(this, "Needs a name", 1500).show();
     }
 }

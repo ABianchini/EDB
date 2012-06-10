@@ -15,5 +15,6 @@
 	<string name="new_file_prompt">New File Name:</string>
 	<string name="read_write">Read/Write</string>
 	<string name="enter">Enter</string>
+	<string name="delete">Delete</string>
     
 </resources>
