@@ -45,7 +45,7 @@ public class EDBChangelogActivity extends Activity {
     	DataInputStream dataIO = new DataInputStream(is);
     	String strLine = null;
     	while ((strLine = dataIO.readLine()) != null) {
-    		sBuffer.append(strLine + "\n");
+    		sBuffer.append(strLine);
     	}
     	dataIO.close();
     	is.close();
