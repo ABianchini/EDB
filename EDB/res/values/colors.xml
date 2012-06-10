@@ -2,5 +2,6 @@
 <resources>
     <color name="grey">#222222</color>
     <color name="black">#000000</color>
+    <color name="light_grey">#cacaca</color>
     
 </resources>

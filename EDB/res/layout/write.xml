@@ -3,10 +3,53 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
-
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/write" />
-
+	<ScrollView
+        android:id="@+id/ScrollViewSettings"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:scrollbars="vertical"
+        android:isScrollContainer="true"
+        android:scrollbarAlwaysDrawVerticalTrack="true" >
+	    <TextView
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:text="@string/new_file"
+	        android:textSize="@dimen/title_text"
+	        android:textColor="@color/grey" />
+	    <ImageView 
+	        android:layout_height="2dp"
+	        android:layout_width="match_parent"
+	        android:src="@color/light_grey" />
+	    <LinearLayout
+	        android:paddingTop="5dp"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal" >
+	        <TextView
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/new_file_one"
+		        android:textSize="@dimen/text"
+		        android:textColor="@color/grey"
+		        android:layout_weight="1" />
+	        <ImageView
+	            android:src="@drawable/add_dark"
+	            android:layout_height="wrap_content"
+	            android:layout_width="wrap_content"
+	            android:layout_weight="0"
+	            android:paddingRight="6dp" />
+	    </LinearLayout>
+	    <TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/new_file_two"
+			android:textSize="@dimen/text"
+			android:textColor="@color/grey" />
+	    <ImageView
+	        android:layout_height="wrap_content"
+	        android:layout_width="wrap_content"
+	        android:src="@drawable/new_file_dialog_screenshot" />
+	    
+	    
+	</ScrollView>
 </LinearLayout>

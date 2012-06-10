@@ -16,5 +16,7 @@
 	<string name="read_write">Read/Write</string>
 	<string name="enter">Enter</string>
 	<string name="delete">Delete</string>
+	<string name="new_file_one">1) Click the New File button on the Main Screen</string>
+	<string name="new_file_two">2) Enter a name for the file and click "Create"</string>
     
 </resources>

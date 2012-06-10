@@ -16,6 +16,7 @@ public final class R {
     public static final class color {
         public static final int black=0x7f060001;
         public static final int grey=0x7f060000;
+        public static final int light_grey=0x7f060002;
     }
     public static final class dimen {
         public static final int big_button=0x7f070002;
@@ -35,7 +36,8 @@ public final class R {
         public static final int help=0x7f020006;
         public static final int ic_launcher=0x7f020007;
         public static final int launcher_icon=0x7f020008;
-        public static final int time=0x7f020009;
+        public static final int new_file_dialog_screenshot=0x7f020009;
+        public static final int time=0x7f02000a;
     }
     public static final class id {
         public static final int AddData_Layout=0x7f0a000a;
@@ -91,7 +93,9 @@ public final class R {
         public static final int hello=0x7f080000;
         public static final int help=0x7f080006;
         public static final int new_file=0x7f08000b;
+        public static final int new_file_one=0x7f080010;
         public static final int new_file_prompt=0x7f08000c;
+        public static final int new_file_two=0x7f080011;
         public static final int read=0x7f080009;
         public static final int read_cap=0x7f080007;
         public static final int read_write=0x7f08000d;
