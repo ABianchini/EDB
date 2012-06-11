@@ -17,6 +17,7 @@ public final class R {
         public static final int black=0x7f060001;
         public static final int grey=0x7f060000;
         public static final int light_grey=0x7f060002;
+        public static final int off_white=0x7f060003;
     }
     public static final class dimen {
         public static final int big_button=0x7f070002;
@@ -47,36 +48,37 @@ public final class R {
         public static final int time=0x7f020011;
     }
     public static final class id {
-        public static final int AddData_Layout=0x7f0a0010;
-        public static final int AddText=0x7f0a0011;
-        public static final int EnterText=0x7f0a0012;
-        public static final int FileName_EditText=0x7f0a0008;
-        public static final int FilesListView=0x7f0a0006;
-        public static final int ImageView_EDBLogo=0x7f0a0017;
+        public static final int AddData_Layout=0x7f0a0011;
+        public static final int AddText=0x7f0a0012;
+        public static final int EnterText=0x7f0a0013;
+        public static final int FileName_EditText=0x7f0a0009;
+        public static final int FilesListView=0x7f0a0007;
+        public static final int ImageView_EDBLogo=0x7f0a0018;
+        public static final int MainMenuLayout=0x7f0a0006;
         public static final int PasswordAuth_EditText=0x7f0a0003;
-        public static final int PasswordButton=0x7f0a0013;
-        public static final int PasswordOne_EditText=0x7f0a000a;
-        public static final int PasswordTwo_EditText=0x7f0a000c;
-        public static final int ReadData_Layout=0x7f0a000d;
-        public static final int RemovePasswordButton=0x7f0a0014;
-        public static final int ScrollViewReadData=0x7f0a000e;
+        public static final int PasswordButton=0x7f0a0014;
+        public static final int PasswordOne_EditText=0x7f0a000b;
+        public static final int PasswordTwo_EditText=0x7f0a000d;
+        public static final int ReadData_Layout=0x7f0a000e;
+        public static final int RemovePasswordButton=0x7f0a0015;
+        public static final int ScrollViewReadData=0x7f0a000f;
         public static final int ScrollViewSettings=0x7f0a0000;
-        public static final int TextPrompt_TextView=0x7f0a000b;
+        public static final int TextPrompt_TextView=0x7f0a000c;
         public static final int TextView_ChangelogText=0x7f0a0004;
-        public static final int TextView_DB=0x7f0a0016;
-        public static final int TextView_E=0x7f0a0015;
-        public static final int TextView_ReadData=0x7f0a000f;
-        public static final int add_menu_item=0x7f0a0018;
-        public static final int changelog_menu_item=0x7f0a001a;
-        public static final int delete_menu_item=0x7f0a001d;
-        public static final int export_menu_item=0x7f0a001c;
-        public static final int help_menu_item=0x7f0a001b;
+        public static final int TextView_DB=0x7f0a0017;
+        public static final int TextView_E=0x7f0a0016;
+        public static final int TextView_ReadData=0x7f0a0010;
+        public static final int add_menu_item=0x7f0a0019;
+        public static final int changelog_menu_item=0x7f0a001b;
+        public static final int delete_menu_item=0x7f0a001e;
+        public static final int export_menu_item=0x7f0a001d;
+        public static final int help_menu_item=0x7f0a001c;
         public static final int layout_root=0x7f0a0005;
-        public static final int layout_root2=0x7f0a0007;
-        public static final int layout_root3=0x7f0a0009;
+        public static final int layout_root2=0x7f0a0008;
+        public static final int layout_root3=0x7f0a000a;
         public static final int layout_root4=0x7f0a0001;
         public static final int preTextPrompt_TextView=0x7f0a0002;
-        public static final int settings_menu_item=0x7f0a0019;
+        public static final int settings_menu_item=0x7f0a001a;
     }
     public static final class layout {
         public static final int about=0x7f030000;

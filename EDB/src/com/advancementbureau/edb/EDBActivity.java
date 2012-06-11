@@ -37,10 +37,10 @@ public class EDBActivity extends SuperEDBActivity {
         SharedPreferences bootPref = getSharedPreferences(FIRST_BOOT, MODE_PRIVATE);
         SharedPreferences.Editor editor = bootPref.edit();
         
+        
         ListView menuList = (ListView) findViewById(R.id.FilesListView);
         File dir = new File("/data/data/com.advancementbureau.edb/files");
 		final String[] files = dir.list();
-        //final String[] files = {"test","weeee","please work!"};
         ArrayAdapter<String> adapt = new ArrayAdapter<String>(this,R.layout.menu_item, files);
         menuList.setAdapter(adapt);
         
@@ -174,6 +174,15 @@ public class EDBActivity extends SuperEDBActivity {
 				}
 			}
         }).show();
+    }
+    
+    @Override
+    protected void onResume() {
+    	ListView menuList = (ListView) findViewById(R.id.FilesListView);
+        File dir = new File("/data/data/com.advancementbureau.edb/files");
+		final String[] files = dir.list();
+        ArrayAdapter<String> adapt = new ArrayAdapter<String>(this,R.layout.menu_item, files);
+        menuList.setAdapter(adapt);
     }
     
     @Override

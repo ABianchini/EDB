@@ -40,6 +40,7 @@ public class EDBSettingsActivity extends SuperEDBActivity {
 		    	editor.putBoolean(PASSWORD_SET, false);
 		    	editor.commit();
 		    	startActivity(new Intent(EDBSettingsActivity.this, EDBSettingsActivity.class));
+		    	EDBSettingsActivity.this.finish();
         	}
 			});
 		} else {
@@ -86,6 +87,7 @@ public class EDBSettingsActivity extends SuperEDBActivity {
 			    	editor.putBoolean(PASSWORD_SET, true);
 			    	editor.commit();
 			    	startActivity(new Intent(EDBSettingsActivity.this, EDBSettingsActivity.class));
+			    	EDBSettingsActivity.this.finish();
 				}
 			}
         }).show();
