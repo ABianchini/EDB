@@ -18,5 +18,13 @@
 	<string name="delete">Delete</string>
 	<string name="new_file_one">1) Click the New File button on the Main Screen</string>
 	<string name="new_file_two">2) Enter a name for the file and click "Create"</string>
+	<string name="add_line">Writing Lines</string>
+	<string name="add_line_one">1) Enter text in the textbox</string>
+	<string name="add_line_two">2) Click Enter and the text will be entered and display on the screen</string>
+	<string name="new_file_title">Adding New Files</string>
+	<string name="read_file">Reading Files</string>
+	<string name="read_file_one">1) Just select a file to read from the list on the Home Screen</string>
+	<string name="read_file_two">2) And start reading</string>
+	<string name="delete_file">Deleting Files</string>
     
 </resources>

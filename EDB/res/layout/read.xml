@@ -3,10 +3,61 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
-
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/read" />
+	<ScrollView
+        android:id="@+id/ScrollViewSettings"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:scrollbars="vertical"
+        android:isScrollContainer="true"
+        android:scrollbarAlwaysDrawVerticalTrack="true" >
+	<LinearLayout 
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:orientation="vertical" >
+	
+	    <TextView
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:text="@string/read_file"
+	        android:textSize="@dimen/title_text"
+	        android:textColor="@color/grey" />
+	    <ImageView 
+	        android:layout_height="2dp"
+	        android:layout_width="match_parent"
+	        android:src="@color/light_grey" />
+	    <TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/read_file_one"
+			android:textSize="@dimen/text"
+			android:textColor="@color/grey"
+			android:paddingTop="5dp" />
+	    <ImageView
+	        android:layout_height="wrap_content"
+	        android:layout_width="wrap_content"
+	        android:src="@drawable/read_file_screenshot" />
+	    <TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/read_file_two"
+			android:textSize="@dimen/text"
+			android:textColor="@color/grey" />
+	    <ImageView
+	        android:layout_height="wrap_content"
+	        android:layout_width="wrap_content"
+	        android:src="@drawable/add_line_two_screenshot" />
+	    <TextView
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:text="@string/delete_file"
+	        android:textSize="@dimen/title_text"
+	        android:textColor="@color/grey" />
+	    <ImageView 
+	        android:layout_height="2dp"
+	        android:layout_width="match_parent"
+	        android:src="@color/light_grey" />
+	    
+    </LinearLayout>
+	</ScrollView>
 
 </LinearLayout>
