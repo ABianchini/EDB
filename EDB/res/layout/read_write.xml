@@ -51,7 +51,7 @@
 	            android:layout_height="wrap_content"
 	            android:maxLines="1"
 	            android:textColor="@color/grey"
-	            android:inputType="textNoSuggestions" />
+	            android:inputType="textCapSentences|textAutoCorrect" />
         	<Button
         	    android:id="@+id/EnterText"
         	    android:text="@string/enter"

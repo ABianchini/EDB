@@ -37,41 +37,6 @@ public class EDBActivity extends SuperEDBActivity {
         SharedPreferences bootPref = getSharedPreferences(FIRST_BOOT, MODE_PRIVATE);
         SharedPreferences.Editor editor = bootPref.edit();
         
-        
-        ListView menuList = (ListView) findViewById(R.id.FilesListView);
-        File dir = new File("/data/data/com.advancementbureau.edb/files");
-		final String[] files = dir.list();
-        ArrayAdapter<String> adapt = new ArrayAdapter<String>(this,R.layout.menu_item, files);
-        menuList.setAdapter(adapt);
-        
-        menuList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-        	public void onItemClick(AdapterView<?> parent, View itemClicked, int position, long id) {
-        		mGameSettings = getSharedPreferences(GAME_PREFERENCES, Context.MODE_PRIVATE);
-		        if (mGameSettings.contains(PASSWORD_SET)) {
-					passSet = mGameSettings.getBoolean(PASSWORD_SET, false);
-				}
-		        if (passSet) {
-	        		authDialog(files[position]);
-		        } else {
-		        	Editor editor = mGameSettings.edit();
-			    	editor.putString(NEW_FILE_NAME, files[position]);
-			    	editor.commit();
-			    	startActivity(new Intent(EDBActivity.this, EDBReadWriteActivity.class));
-		        }
-        	}
-        });
-        
-        /*
-        File folder = new File(Environment.getExternalStorageDirectory() + "/EDB");
-        boolean success = false;
-        if (!folder.exists()) {
-            success = folder.mkdir();
-	        if (!success) {
-	        	Toast.makeText(this, "Failed", 1000).show();
-	        } else {
-	        	Toast.makeText(this, "Worked! :D", 1000).show();
-	        }
-        }*/
         if (bootPref.getBoolean(FIRST_BOOT, true)) {
         	editor.putBoolean("boot", firstBootDone);
             editor.commit();
@@ -178,11 +143,29 @@ public class EDBActivity extends SuperEDBActivity {
     
     @Override
     protected void onResume() {
+    	super.onResume();
     	ListView menuList = (ListView) findViewById(R.id.FilesListView);
         File dir = new File("/data/data/com.advancementbureau.edb/files");
 		final String[] files = dir.list();
         ArrayAdapter<String> adapt = new ArrayAdapter<String>(this,R.layout.menu_item, files);
         menuList.setAdapter(adapt);
+        
+        menuList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        	public void onItemClick(AdapterView<?> parent, View itemClicked, int position, long id) {
+        		mGameSettings = getSharedPreferences(GAME_PREFERENCES, Context.MODE_PRIVATE);
+		        if (mGameSettings.contains(PASSWORD_SET)) {
+					passSet = mGameSettings.getBoolean(PASSWORD_SET, false);
+				}
+		        if (passSet) {
+	        		authDialog(files[position]);
+		        } else {
+		        	Editor editor = mGameSettings.edit();
+			    	editor.putString(NEW_FILE_NAME, files[position]);
+			    	editor.commit();
+			    	startActivity(new Intent(EDBActivity.this, EDBReadWriteActivity.class));
+		        }
+        	}
+        });
     }
     
     @Override
@@ -191,14 +174,13 @@ public class EDBActivity extends SuperEDBActivity {
     	getMenuInflater().inflate(R.menu.mainoptions, menu);
     	menu.findItem(R.id.add_menu_item);
     	menu.findItem(R.id.settings_menu_item).setIntent(new Intent(this, EDBSettingsActivity.class));
-    	menu.findItem(R.id.help_menu_item).setIntent(new Intent(this, EDBHelpActivity.class));
-    	menu.findItem(R.id.changelog_menu_item).setIntent(new Intent(this, EDBChangelogActivity.class));
+    	menu.findItem(R.id.help_menu_item).setIntent(new Intent(this, EDBChangelogActivity.class));
+    	menu.findItem(R.id.changelog_menu_item).setIntent(new Intent(this, EDBHelpActivity.class));
     	return true;
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
     	super.onOptionsItemSelected(item);
-    	//Changelog
     	if (item.getItemId() == R.id.changelog_menu_item) {
     		startActivity(item.getIntent()); }
     	if (item.getItemId() == R.id.settings_menu_item) {

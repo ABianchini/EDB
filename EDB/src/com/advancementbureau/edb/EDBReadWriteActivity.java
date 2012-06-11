@@ -19,6 +19,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -47,6 +48,39 @@ public class EDBReadWriteActivity extends SuperEDBActivity {
         }
         offset = offsetIdentifier(fileName);
         updateReadData();
+        
+        //EditText addText = (EditText) findViewById(R.id.AddText);
+        ((EditText)findViewById(R.id.AddText)).setOnEditorActionListener(new EditText.OnEditorActionListener() {
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+            	String insertString = null;
+        		EditText addText = (EditText) findViewById(R.id.AddText);
+    			try {
+    				insertString = addText.getText().toString();
+    				FileWriter out = new FileWriter(currentFile, true);
+    				BufferedWriter writer = new BufferedWriter(out);
+    				char[] inLinePieces = insertString.toCharArray();
+    				char[] outLinePieces = new char[inLinePieces.length];
+    				for (int i = 0; i < inLinePieces.length; i++) {
+    					char outChar;
+    					char inChar = inLinePieces[i];
+						outChar = (char) (inChar + offset);
+    					outLinePieces[i] = outChar;
+    				}
+    				String outLine = new String(outLinePieces);
+    				writer.write(outLine);
+    				writer.newLine();
+    				writer.close();
+    				out.close();
+    				addText.setText("");
+    		        updateReadData();
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+                return true;
+            }
+        });
         
         final Button enterButton = (Button) findViewById(R.id.EnterText);
         enterButton.setOnClickListener(new View.OnClickListener() {
