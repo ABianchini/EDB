@@ -26,6 +26,8 @@ import android.widget.Toast;
 
 public class EDBActivity extends SuperEDBActivity {
 	boolean firstBootDone;
+	boolean authorized;
+	boolean passSet;
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,10 +46,18 @@ public class EDBActivity extends SuperEDBActivity {
         
         menuList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
         	public void onItemClick(AdapterView<?> parent, View itemClicked, int position, long id) {
-        		Editor editor = mGameSettings.edit();
-		    	editor.putString(NEW_FILE_NAME, files[position]);
-		    	editor.commit();
-		    	startActivity(new Intent(EDBActivity.this, EDBReadWriteActivity.class));
+        		mGameSettings = getSharedPreferences(GAME_PREFERENCES, Context.MODE_PRIVATE);
+		        if (mGameSettings.contains(PASSWORD_SET)) {
+					passSet = mGameSettings.getBoolean(PASSWORD_SET, false);
+				}
+		        if (passSet) {
+	        		authDialog(files[position]);
+		        } else {
+		        	Editor editor = mGameSettings.edit();
+			    	editor.putString(NEW_FILE_NAME, files[position]);
+			    	editor.commit();
+			    	startActivity(new Intent(EDBActivity.this, EDBReadWriteActivity.class));
+		        }
         	}
         });
         
@@ -67,6 +77,42 @@ public class EDBActivity extends SuperEDBActivity {
             editor.commit();
             firstDialog();
         }
+    }
+    
+    public void authDialog(final String s) {
+    	Context mContext = getApplicationContext();
+    	LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
+    	View layout = inflater.inflate(R.layout.auth_dialog, (ViewGroup) findViewById(R.id.layout_root4));
+    	
+    	final EditText passEntry = (EditText) layout.findViewById(R.id.PasswordAuth_EditText);
+		
+		new AlertDialog.Builder(this)
+        .setTitle(R.string.password_title)
+        .setIcon(R.drawable.pass)
+        .setView(layout)
+        .setNegativeButton("Nevermind", new OnClickListener() {
+			public void onClick(DialogInterface arg0, int arg1) {
+				
+			}
+        })
+        .setPositiveButton("Authorize", new OnClickListener() {
+			public void onClick(DialogInterface arg0, int arg1) {
+				String password = "";
+				mGameSettings = getSharedPreferences(GAME_PREFERENCES, Context.MODE_PRIVATE);
+		        if (mGameSettings.contains(PASSWORD)) {
+					password = mGameSettings.getString(PASSWORD, "");
+				}
+		        authorized = password.equals(passEntry.getText().toString());
+		        if (authorized) {
+		        	Editor editor = mGameSettings.edit();
+			    	editor.putString(NEW_FILE_NAME, s);
+			    	editor.commit();
+			    	startActivity(new Intent(EDBActivity.this, EDBReadWriteActivity.class));
+		        } else {
+		        	toastNoAuth();
+		        }
+			}
+        }).show();
     }
     
     public void firstDialog() {
@@ -136,8 +182,8 @@ public class EDBActivity extends SuperEDBActivity {
     	getMenuInflater().inflate(R.menu.mainoptions, menu);
     	menu.findItem(R.id.add_menu_item);
     	menu.findItem(R.id.settings_menu_item).setIntent(new Intent(this, EDBSettingsActivity.class));
-    	menu.findItem(R.id.changelog_menu_item).setIntent(new Intent(this, EDBChangelogActivity.class));
     	menu.findItem(R.id.help_menu_item).setIntent(new Intent(this, EDBHelpActivity.class));
+    	menu.findItem(R.id.changelog_menu_item).setIntent(new Intent(this, EDBChangelogActivity.class));
     	return true;
     }
     @Override
@@ -153,6 +199,9 @@ public class EDBActivity extends SuperEDBActivity {
     	if (item.getItemId() == R.id.add_menu_item) {
     		newFileDialog(); }
     	return true;
+    }
+    private void toastNoAuth() {
+    	Toast.makeText(this, "Access Denied", 1000).show();
     }
     private void toastName() {
     	Toast.makeText(this, "Needs a name", 1500).show();

@@ -2,11 +2,13 @@ package com.advancementbureau.edb;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 
 import android.app.ActionBar;
 import android.app.AlertDialog;
@@ -16,6 +18,7 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -133,10 +136,47 @@ public class EDBReadWriteActivity extends SuperEDBActivity {
         }).show();
 	}
 	
+	public void exportFile() {
+        File folder = new File(Environment.getExternalStorageDirectory() + "/EDB");
+        if (!folder.exists()) {
+        	boolean success = folder.mkdir();
+        }
+		try {
+			String strLine;
+			InputStream is = openFileInput(fileName);
+	    	DataInputStream dataIO = new DataInputStream(is);
+	    	FileWriter out = new FileWriter(Environment.getExternalStorageDirectory() + "/EDB/" + fileName, true);
+			BufferedWriter writer = new BufferedWriter(out);
+			while ((strLine = dataIO.readLine()) != null) {
+				char[] inLinePieces = strLine.toCharArray();
+				char[] outLinePieces = new char[inLinePieces.length];
+				for (int i = 0; i < inLinePieces.length; i++) {
+					char outChar;
+					char inChar = inLinePieces[i];
+					outChar = (char) (inChar - offset);
+					outLinePieces[i] = outChar;
+				}
+				String outLine = new String(outLinePieces);
+				writer.append(outLine);
+				writer.newLine();
+	    	}
+			writer.close();
+			out.close();
+			dataIO.close();
+	    	is.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		Toast.makeText(getBaseContext(), fileName + " has been written to /EDB/", 1000).show();
+	}
+	
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
     	super.onCreateOptionsMenu(menu);
     	getMenuInflater().inflate(R.menu.readwriteoptions, menu);
+    	menu.findItem(R.id.export_menu_item);
     	menu.findItem(R.id.delete_menu_item);
     	return true;
     }
@@ -148,8 +188,11 @@ public class EDBReadWriteActivity extends SuperEDBActivity {
 			Intent intent2 = new Intent(this, EDBActivity.class);
 			intent2.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(intent2); }
+    	if (item.getItemId() == R.id.export_menu_item) {
+			exportFile(); }
     	if (item.getItemId() == R.id.delete_menu_item) {
 			confirmDialog(); }
+    	
     	return true;
     }
 	

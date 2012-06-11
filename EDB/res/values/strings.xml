@@ -39,6 +39,8 @@
 	<string name="password_prompt_one">Enter a password:</string>
 	<string name="password_prompt_two">Enter it again:</string>
 	<string name="password_remove">Remove Password</string>
+	<string name="password_prompt">Please enter your password:</string>
+	<string name="export">Export</string>
     
     
 </resources>

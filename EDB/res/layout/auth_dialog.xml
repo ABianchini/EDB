@@ -3,30 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:id="@+id/layout_root3" >
+    android:id="@+id/layout_root4" >
     <TextView
         android:id="@+id/preTextPrompt_TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/grey"
-        android:text="@string/password_prompt_one"
+        android:text="@string/password_prompt"
         android:padding="5dp" />
     <EditText
-        android:id="@+id/PasswordOne_EditText"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:textColor="@color/grey"
-        android:padding="5dp"
-        android:inputType="textPassword" />
-    <TextView
-        android:id="@+id/TextPrompt_TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/grey"
-        android:text="@string/password_prompt_two"
-        android:padding="5dp" />
-    <EditText
-        android:id="@+id/PasswordTwo_EditText"
+        android:id="@+id/PasswordAuth_EditText"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:textColor="@color/grey"

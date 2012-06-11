@@ -1,12 +1,16 @@
 package com.advancementbureau.edb;
 
+import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
 import android.content.SharedPreferences.Editor;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -21,7 +25,11 @@ public class EDBSettingsActivity extends SuperEDBActivity {
         mGameSettings = getSharedPreferences(GAME_PREFERENCES, Context.MODE_PRIVATE);
         if (mGameSettings.contains(PASSWORD_SET)) {
 			passwordSet = mGameSettings.getBoolean(PASSWORD_SET, false);
-		} 
+		}
+        if (Build.VERSION.SDK_INT >= 11) {
+	        ActionBar actionBar2 = getActionBar();
+	        actionBar2.setDisplayHomeAsUpEnabled(true);
+        }
         if (passwordSet) {
 			setContentView(R.layout.settings_pass);
 			LinearLayout removePasswordButton = (LinearLayout) findViewById(R.id.RemovePasswordButton);
@@ -31,6 +39,7 @@ public class EDBSettingsActivity extends SuperEDBActivity {
 				Editor editor = mGameSettings.edit();
 		    	editor.putBoolean(PASSWORD_SET, false);
 		    	editor.commit();
+		    	startActivity(new Intent(EDBSettingsActivity.this, EDBSettingsActivity.class));
         	}
 			});
 		} else {
@@ -76,6 +85,7 @@ public class EDBSettingsActivity extends SuperEDBActivity {
 			    	editor.putString(PASSWORD, passwordStringOne);
 			    	editor.putBoolean(PASSWORD_SET, true);
 			    	editor.commit();
+			    	startActivity(new Intent(EDBSettingsActivity.this, EDBSettingsActivity.class));
 				}
 			}
         }).show();
@@ -84,4 +94,13 @@ public class EDBSettingsActivity extends SuperEDBActivity {
 	private void toastNoMatch() {
 		Toast.makeText(this, "Passwords did not match", 1000).show();
 	}
+	@Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+    	super.onOptionsItemSelected(item);
+    	if (item.getItemId() == android.R.id.home) {
+			Intent intent2 = new Intent(this, EDBActivity.class);
+			intent2.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(intent2); }
+    	return true;
+    }
 }
