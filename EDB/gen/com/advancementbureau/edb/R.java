@@ -69,10 +69,10 @@ public final class R {
         public static final int TextView_E=0x7f0a0016;
         public static final int TextView_ReadData=0x7f0a0010;
         public static final int add_menu_item=0x7f0a0019;
-        public static final int changelog_menu_item=0x7f0a001b;
+        public static final int changelog_menu_item=0x7f0a001c;
         public static final int delete_menu_item=0x7f0a001e;
         public static final int export_menu_item=0x7f0a001d;
-        public static final int help_menu_item=0x7f0a001c;
+        public static final int help_menu_item=0x7f0a001b;
         public static final int layout_root=0x7f0a0005;
         public static final int layout_root2=0x7f0a0008;
         public static final int layout_root3=0x7f0a000a;

@@ -174,8 +174,8 @@ public class EDBActivity extends SuperEDBActivity {
     	getMenuInflater().inflate(R.menu.mainoptions, menu);
     	menu.findItem(R.id.add_menu_item);
     	menu.findItem(R.id.settings_menu_item).setIntent(new Intent(this, EDBSettingsActivity.class));
-    	menu.findItem(R.id.help_menu_item).setIntent(new Intent(this, EDBChangelogActivity.class));
-    	menu.findItem(R.id.changelog_menu_item).setIntent(new Intent(this, EDBHelpActivity.class));
+    	menu.findItem(R.id.changelog_menu_item).setIntent(new Intent(this, EDBChangelogActivity.class));
+    	menu.findItem(R.id.help_menu_item).setIntent(new Intent(this, EDBHelpActivity.class));
     	return true;
     }
     @Override
