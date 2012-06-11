@@ -26,6 +26,7 @@
         <activity android:name="EDBReadActivity"></activity>
         <activity android:name="EDBAboutActivity"></activity>
         <activity android:name="EDBReadWriteActivity"></activity>
+        <activity android:name="EDBSettingsActivity" android:icon="@drawable/settings"></activity>
     </application>
 
 </manifest>

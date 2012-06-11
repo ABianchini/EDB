@@ -26,5 +26,19 @@
 	<string name="read_file_one">1) Just select a file to read from the list on the Home Screen</string>
 	<string name="read_file_two">2) And start reading</string>
 	<string name="delete_file">Deleting Files</string>
+	<string name="delete_file_one">1) Click the Delete button or hit menu to bring up the Delete button</string>
+	<string name="delete_file_two">2) Then click Delete on the Confirm Dialog Box, dummy</string>
+	<string name="encrypt">Encryption</string>
+	<string name="encrypt_one">EDB\'s file encryption is unique to any system you\'ve seen in the past. Each file has a unique method for encryption. The files stored on your phone are encrypted themselves, so even if one does find them, your secrets are safe.</string>
+    <string name="password_title">Password</string>
+    <string name="password_one">Passwords are optional, because you should set a lockscreen pattern or password. However, should you want one, simply go to this app\'s Settings</string>
+	<string name="warning">Warning</string>
+	<string name="warning_one">This encryption method is NOT guarenteed. Use at your own risk.</string>
+	<string name="settings">Settings</string>
+	<string name="setting_password">Click here to set a super cool password!</string>
+	<string name="password_prompt_one">Enter a password:</string>
+	<string name="password_prompt_two">Enter it again:</string>
+	<string name="password_remove">Remove Password</string>
+    
     
 </resources>

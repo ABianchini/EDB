@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -136,6 +135,7 @@ public class EDBActivity extends SuperEDBActivity {
     	super.onCreateOptionsMenu(menu);
     	getMenuInflater().inflate(R.menu.mainoptions, menu);
     	menu.findItem(R.id.add_menu_item);
+    	menu.findItem(R.id.settings_menu_item).setIntent(new Intent(this, EDBSettingsActivity.class));
     	menu.findItem(R.id.changelog_menu_item).setIntent(new Intent(this, EDBChangelogActivity.class));
     	menu.findItem(R.id.help_menu_item).setIntent(new Intent(this, EDBHelpActivity.class));
     	return true;
@@ -145,6 +145,8 @@ public class EDBActivity extends SuperEDBActivity {
     	super.onOptionsItemSelected(item);
     	//Changelog
     	if (item.getItemId() == R.id.changelog_menu_item) {
+    		startActivity(item.getIntent()); }
+    	if (item.getItemId() == R.id.settings_menu_item) {
     		startActivity(item.getIntent()); }
     	if (item.getItemId() == R.id.help_menu_item) {
     		startActivity(item.getIntent()); }

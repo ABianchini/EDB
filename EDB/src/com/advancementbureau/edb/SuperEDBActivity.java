@@ -12,7 +12,8 @@ public class SuperEDBActivity extends Activity {
 	//if true the first boot has not yet happened
 	public static final String FIRST_BOOT = "boot";
 	public static final String NEW_FILE_NAME = "newFile";
-	public static final String FILE_CHOICE = "file";
+	public static final String PASSWORD = "passwd";
+	public static final String PASSWORD_SET ="passwordBoolean";
 	
 	public int offsetIdentifier(String s) {
 		int offset = 4;

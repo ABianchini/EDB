@@ -6,13 +6,18 @@
         android:icon="@drawable/add_light"
         android:showAsAction="always|withText" ></item>
     <item
-        android:id="@+id/help_menu_item"
-        android:title="@string/help"
-        android:icon="@drawable/help"
+        android:id="@+id/settings_menu_item"
+        android:title="@string/settings"
+        android:icon="@drawable/settings"
         android:showAsAction="always|withText" ></item>
     <item
         android:id="@+id/changelog_menu_item"
         android:title="@string/changelog"
         android:icon="@drawable/time"
+        android:showAsAction="never" ></item>
+    <item
+        android:id="@+id/help_menu_item"
+        android:title="@string/help"
+        android:icon="@drawable/help"
         android:showAsAction="never" ></item>
 	</menu>
