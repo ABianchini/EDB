@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 public class EDBSettingsActivity extends SuperEDBActivity {
 	boolean passwordSet;
+	boolean authorized;
 	
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,13 +36,8 @@ public class EDBSettingsActivity extends SuperEDBActivity {
 			LinearLayout removePasswordButton = (LinearLayout) findViewById(R.id.RemovePasswordButton);
 			removePasswordButton.setOnClickListener(new View.OnClickListener() {
 				public void onClick(View view) {
-        		mGameSettings = getSharedPreferences(GAME_PREFERENCES, Context.MODE_PRIVATE);
-				Editor editor = mGameSettings.edit();
-		    	editor.putBoolean(PASSWORD_SET, false);
-		    	editor.commit();
-		    	startActivity(new Intent(EDBSettingsActivity.this, EDBSettingsActivity.class));
-		    	EDBSettingsActivity.this.finish();
-        	}
+	        		authDialog();
+				}
 			});
 		} else {
 			setContentView(R.layout.settings);
@@ -53,7 +49,44 @@ public class EDBSettingsActivity extends SuperEDBActivity {
         		passwordDialog();
         	}
         });
-        
+    }
+	
+	public void authDialog() {
+    	Context mContext = getApplicationContext();
+    	LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
+    	View layout = inflater.inflate(R.layout.auth_dialog, (ViewGroup) findViewById(R.id.layout_root4));
+    	
+    	final EditText passEntry = (EditText) layout.findViewById(R.id.PasswordAuth_EditText);
+		
+		new AlertDialog.Builder(this)
+        .setTitle(R.string.password_title)
+        .setIcon(R.drawable.pass)
+        .setView(layout)
+        .setNegativeButton("Nevermind", new OnClickListener() {
+			public void onClick(DialogInterface arg0, int arg1) {
+				
+			}
+        })
+        .setPositiveButton("Authorize", new OnClickListener() {
+			public void onClick(DialogInterface arg0, int arg1) {
+				String password = "";
+				mGameSettings = getSharedPreferences(GAME_PREFERENCES, Context.MODE_PRIVATE);
+		        if (mGameSettings.contains(PASSWORD)) {
+					password = mGameSettings.getString(PASSWORD, "");
+				}
+		        authorized = password.equals(passEntry.getText().toString());
+		        if (authorized) {
+		        	mGameSettings = getSharedPreferences(GAME_PREFERENCES, Context.MODE_PRIVATE);
+					Editor editor = mGameSettings.edit();
+			    	editor.putBoolean(PASSWORD_SET, false);
+			    	editor.commit();
+			    	startActivity(new Intent(EDBSettingsActivity.this, EDBSettingsActivity.class));
+			    	EDBSettingsActivity.this.finish();
+		        } else {
+		        	toastNoAuth();
+		        }
+			}
+        }).show();
     }
 	
 	public void passwordDialog() {
@@ -104,5 +137,8 @@ public class EDBSettingsActivity extends SuperEDBActivity {
 			intent2.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(intent2); }
     	return true;
+    }
+	private void toastNoAuth() {
+    	Toast.makeText(this, "Access Denied", 1000).show();
     }
 }
