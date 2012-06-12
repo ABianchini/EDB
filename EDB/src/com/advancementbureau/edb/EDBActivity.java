@@ -85,6 +85,39 @@ public class EDBActivity extends SuperEDBActivity {
         }).show();
     }
     
+    public void authOptionsDialog(final String s) {
+    	Context mContext = getApplicationContext();
+    	LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
+    	View layout = inflater.inflate(R.layout.auth_dialog, (ViewGroup) findViewById(R.id.layout_root4));
+    	
+    	final EditText passEntry = (EditText) layout.findViewById(R.id.PasswordAuth_EditText);
+		
+		new AlertDialog.Builder(this)
+        .setTitle(R.string.password_title)
+        .setIcon(R.drawable.pass)
+        .setView(layout)
+        .setNegativeButton("Nevermind", new OnClickListener() {
+			public void onClick(DialogInterface arg0, int arg1) {
+				
+			}
+        })
+        .setPositiveButton("Authorize", new OnClickListener() {
+			public void onClick(DialogInterface arg0, int arg1) {
+				String password = "";
+				mGameSettings = getSharedPreferences(GAME_PREFERENCES, Context.MODE_PRIVATE);
+		        if (mGameSettings.contains(PASSWORD)) {
+					password = mGameSettings.getString(PASSWORD, "");
+				}
+		        authorized = password.equals(passEntry.getText().toString());
+		        if (authorized) {
+		        	fileOptionsDialog(s);
+		        } else {
+		        	toastNoAuth();
+		        }
+			}
+        }).show();
+    }
+    
     public void firstDialog() {
     	firstBootDone = false;
     	Context mContext = getApplicationContext();
@@ -177,7 +210,15 @@ public class EDBActivity extends SuperEDBActivity {
         });
         menuList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             public boolean onItemLongClick(AdapterView<?> av, View v, int pos, long id) {
-            	fileOptionsDialog(files[pos]);
+            	mGameSettings = getSharedPreferences(GAME_PREFERENCES, Context.MODE_PRIVATE);
+		        if (mGameSettings.contains(PASSWORD_SET)) {
+					passSet = mGameSettings.getBoolean(PASSWORD_SET, false);
+				}
+		        if (passSet) {
+	        		authOptionsDialog(files[pos]);
+		        } else {
+		        	fileOptionsDialog(files[pos]);
+		        }
             	return true;
             }
         });
