@@ -23,10 +23,11 @@ public class EDBSplashActivity extends SuperEDBActivity {
         SharedPreferences bootPref = getSharedPreferences(FIRST_BOOT, MODE_PRIVATE);
         mGameSettings = getSharedPreferences(GAME_PREFERENCES, Context.MODE_PRIVATE);
         Editor editor = mGameSettings.edit();
-    	editor.putBoolean(PASSWORD_SET, false);
-    	editor.commit();
+    	
     	
         if (bootPref.getBoolean(FIRST_BOOT, true)) {
+        	editor.putBoolean(PASSWORD_SET, false);
+        	editor.commit();
         	Animate();
         	textFileCreate();
         } else {
