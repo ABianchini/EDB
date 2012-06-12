@@ -27,7 +27,7 @@
 	<string name="read_file_two">2) And start reading</string>
 	<string name="delete_file">Deleting Files</string>
 	<string name="delete_file_one">1) Click the Delete button or hit menu to bring up the Delete button</string>
-	<string name="delete_file_two">2) Then click Delete on the Confirm Dialog Box, dummy</string>
+	<string name="delete_file_two">2) Then click Delete on the Confirm Dialog Box, dummy\nOR\n1) Long press the file on the Main Menu to pull up the Options Dialog for the file</string>
 	<string name="encrypt">Encryption</string>
 	<string name="encrypt_one">EDB\'s file encryption is unique to any system you\'ve seen in the past. Each file has a unique method for encryption. The files stored on your phone are encrypted themselves, so even if one does find them, your secrets are safe.</string>
     <string name="password_title">Password</string>
@@ -41,6 +41,8 @@
 	<string name="password_remove">Remove Password</string>
 	<string name="password_prompt">Please enter your password:</string>
 	<string name="export">Export</string>
-    
+	<string name="export_file">Exporting Files</string>
+	<string name="export_file_one">1) Click the Export button when viewing the file\nOR\n1)Long press the file on the Main Menu to pull up the Options Dialog for the file\n2) After either method a Toast Notification will come up looking like this:</string>
+    <string name="export_file_two">3) Exported files are saved in the EDB folder on your SD Card</string>
     
 </resources>

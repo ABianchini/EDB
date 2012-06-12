@@ -38,14 +38,16 @@ public final class R {
         public static final int delete_screenshot=0x7f020007;
         public static final int edb_logo=0x7f020008;
         public static final int export_light=0x7f020009;
-        public static final int help=0x7f02000a;
-        public static final int ic_launcher=0x7f02000b;
-        public static final int launcher_icon=0x7f02000c;
-        public static final int new_file_dialog_screenshot=0x7f02000d;
-        public static final int pass=0x7f02000e;
-        public static final int read_file_screenshot=0x7f02000f;
-        public static final int settings=0x7f020010;
-        public static final int time=0x7f020011;
+        public static final int export_toast_screenshot=0x7f02000a;
+        public static final int file_options_screenshot=0x7f02000b;
+        public static final int help=0x7f02000c;
+        public static final int ic_launcher=0x7f02000d;
+        public static final int launcher_icon=0x7f02000e;
+        public static final int new_file_dialog_screenshot=0x7f02000f;
+        public static final int pass=0x7f020010;
+        public static final int read_file_screenshot=0x7f020011;
+        public static final int settings=0x7f020012;
+        public static final int time=0x7f020013;
     }
     public static final class id {
         public static final int AddData_Layout=0x7f0a0011;
@@ -121,6 +123,9 @@ public final class R {
         public static final int encrypted=0x7f080003;
         public static final int enter=0x7f08000e;
         public static final int export=0x7f080028;
+        public static final int export_file=0x7f080029;
+        public static final int export_file_one=0x7f08002a;
+        public static final int export_file_two=0x7f08002b;
         public static final int first_dialog_text=0x7f080005;
         public static final int hello=0x7f080000;
         public static final int help=0x7f080006;

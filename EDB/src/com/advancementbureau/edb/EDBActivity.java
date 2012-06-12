@@ -1,9 +1,13 @@
 package com.advancementbureau.edb;
 
+import java.io.BufferedWriter;
+import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -13,6 +17,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -147,7 +152,11 @@ public class EDBActivity extends SuperEDBActivity {
     	ListView menuList = (ListView) findViewById(R.id.FilesListView);
         File dir = new File("/data/data/com.advancementbureau.edb/files");
 		final String[] files = dir.list();
-        ArrayAdapter<String> adapt = new ArrayAdapter<String>(this,R.layout.menu_item, files);
+		String[] filesNoTxt = new String[files.length];
+		for (int i = 0; i < files.length; i++) {
+			filesNoTxt[i] = files[i].substring(0, files[i].length()-4);
+		}
+        ArrayAdapter<String> adapt = new ArrayAdapter<String>(this,R.layout.menu_item, filesNoTxt);
         menuList.setAdapter(adapt);
         
         menuList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -166,6 +175,13 @@ public class EDBActivity extends SuperEDBActivity {
 		        }
         	}
         });
+        menuList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            public boolean onItemLongClick(AdapterView<?> av, View v, int pos, long id) {
+            	fileOptionsDialog(files[pos]);
+            	return true;
+            }
+        });
+
     }
     
     @Override
@@ -191,10 +207,92 @@ public class EDBActivity extends SuperEDBActivity {
     		newFileDialog(); }
     	return true;
     }
+    
+    private void fileOptionsDialog(final String s) {
+    	final CharSequence[] items = {"Delete", "Export"};
+    	AlertDialog.Builder builder = new AlertDialog.Builder(this);
+    	builder.setTitle("Options");
+    	builder.setItems(items, new DialogInterface.OnClickListener() {
+    	    public void onClick(DialogInterface dialog, int item) {
+    	        if (item == 0) confirmDialog(s);
+    	        if (item == 1) exportFile(s);
+    	    }
+    	});
+    	AlertDialog alert = builder.create();
+    	alert.show();
+    }
+    
+    public void exportFile(String s) {
+    	String fileName = s;
+    	int offset = offsetIdentifier(fileName);
+        File folder = new File(Environment.getExternalStorageDirectory() + "/EDB");
+        if (!folder.exists()) {
+        	boolean success = folder.mkdir();
+        }
+		try {
+			String strLine;
+			InputStream is = openFileInput(fileName);
+	    	DataInputStream dataIO = new DataInputStream(is);
+	    	FileWriter out = new FileWriter(Environment.getExternalStorageDirectory() + "/EDB/" + fileName, true);
+			BufferedWriter writer = new BufferedWriter(out);
+			while ((strLine = dataIO.readLine()) != null) {
+				char[] inLinePieces = strLine.toCharArray();
+				char[] outLinePieces = new char[inLinePieces.length];
+				for (int i = 0; i < inLinePieces.length; i++) {
+					char outChar;
+					char inChar = inLinePieces[i];
+					outChar = (char) (inChar - offset);
+					outLinePieces[i] = outChar;
+				}
+				String outLine = new String(outLinePieces);
+				writer.append(outLine);
+				writer.newLine();
+	    	}
+			writer.close();
+			out.close();
+			dataIO.close();
+	    	is.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		Toast.makeText(getBaseContext(), fileName + " has been written to /EDB/", 1000).show();
+	}
+    
+    public void confirmDialog(String s) {
+    	String fileName = s;
+    	final File currentFile = new File("/data/data/com.advancementbureau.edb/files/" + fileName);
+		new AlertDialog.Builder(this)
+        .setTitle("Confirm")
+        .setIcon(R.drawable.delete_dark)
+        .setNegativeButton("Nevermind", new OnClickListener() {
+			public void onClick(DialogInterface arg0, int arg1) {
+			}
+        })
+        .setPositiveButton("Delete", new OnClickListener() {
+			public void onClick(DialogInterface arg0, int arg1) {
+				boolean success = currentFile.delete();
+				deleteReportToast(success);
+				if (success) {
+					startActivity(new Intent(EDBActivity.this, EDBActivity.class));
+					EDBActivity.this.finish();
+				}
+			}
+        }).show();
+	}
+    
     private void toastNoAuth() {
     	Toast.makeText(this, "Access Denied", 1000).show();
     }
     private void toastName() {
     	Toast.makeText(this, "Needs a name", 1500).show();
     }
+    private void deleteReportToast(boolean i) {
+		if (i) {
+			Toast.makeText(this, "Success", 1000).show();
+		} else {
+			Toast.makeText(this, "File NOT deleted", 1000).show();
+		}
+	}
 }

@@ -76,6 +76,43 @@
 	        android:text="@string/delete_file_two"
 	        android:textSize="@dimen/text"
 	        android:textColor="@color/grey" />
+	    <ImageView
+	        android:paddingTop="5dp"
+	        android:paddingBottom="5dp"
+	        android:layout_height="wrap_content"
+	        android:layout_width="wrap_content"
+	        android:src="@drawable/file_options_screenshot" />
+	    
+	    <TextView
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:text="@string/export_file"
+	        android:textSize="@dimen/title_text"
+	        android:textColor="@color/grey" />
+	    <ImageView 
+	        android:layout_height="2dp"
+	        android:layout_width="match_parent"
+	        android:src="@color/light_grey" />
+	    <TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/export_file_one"
+			android:textSize="@dimen/text"
+			android:textColor="@color/grey"
+			android:paddingTop="5dp" />
+	    <ImageView
+	        android:paddingTop="5dp"
+	        android:paddingBottom="5dp"
+	        android:layout_height="wrap_content"
+	        android:layout_width="wrap_content"
+	        android:src="@drawable/export_toast_screenshot" />
+	    <TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/export_file_two"
+			android:textSize="@dimen/text"
+			android:textColor="@color/grey"
+			android:paddingTop="5dp" />
 	    
     </LinearLayout>
 	</ScrollView>
